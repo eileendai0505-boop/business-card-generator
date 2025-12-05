@@ -1,0 +1,1184 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #fcfbf9;
+    min-height: 100vh;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+.header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.header-text h1 {
+    font-size: 28px;
+    color: #2C3E50;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.header-text p {
+    color: #7F8C8D;
+    font-size: 14px;
+}
+
+/* Main Content */
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    background: #fcfbf9;
+}
+
+/* 左侧表单区域 */
+.form-section {
+    flex: 1;
+    padding: 40px;
+    background: #FFFFFF;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.card-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2C3E50;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 12px 16px;
+    border: 2px solid #E0E6ED;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #F8F9FA;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3498DB;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.form-group textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* 头像上传 */
+.avatar-upload {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.avatar-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #F0F3F7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 3px solid #3498DB;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.avatar-preview:hover {
+    transform: scale(1.05);
+}
+
+.avatar-preview i {
+    font-size: 40px;
+    color: #95A5A6;
+}
+
+.avatar-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upload-btn {
+    padding: 10px 20px;
+    background: #3498DB;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-btn:hover {
+    background: #2980B9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+/* 右侧预览区域 */
+.preview-section {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.preview-sticky {
+    position: sticky;
+    top: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: calc(100vh - 150px);
+    overflow-y: auto;
+}
+
+.preview-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.preview-header h2 {
+    font-size: 28px;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.preview-header p {
+    color: #7F8C8D;
+}
+
+/* 风格选择器 */
+.style-selector {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.style-option {
+    flex: 1;
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    border: 2px solid #E0E6ED;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.style-option:hover {
+    border-color: #3498DB;
+    transform: translateY(-2px);
+}
+
+.style-option.active {
+    border-color: #3498DB;
+    background: rgba(52, 152, 219, 0.1);
+}
+
+.style-preview {
+    width: 60px;
+    height: 38px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.style-preview.version1 {
+    background: #2C3E50;
+    border-radius: 4px;
+}
+
+.style-preview.version2 {
+    background: #E0F7FA;
+    border: 1px dashed #2C3E50;
+    position: relative;
+}
+
+.style-preview.version2::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 15px;
+    height: 8px;
+    background-image: radial-gradient(#2C3E50 1px, transparent 1px);
+    background-size: 3px 3px;
+}
+
+.style-preview.version3 {
+    background: linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #B8860B 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.style-preview.version3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(45deg, #FFD700 0%, #D4AF37 100%);
+    border-radius: 4px 0 0 4px;
+}
+
+.style-option span {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2C3E50;
+    text-align: center;
+}
+
+.style-option small {
+    font-size: 10px;
+    color: #7F8C8D;
+    text-align: center;
+}
+
+/* Card Container */
+.card-container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+/* Version 1: Modern Dark (Original Style) */
+.business-card.version1 {
+    width: 350px;
+    min-height: 220px;
+    background: #2C3E50;
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    overflow: visible;
+    box-shadow: 0 10px 30px rgba(44, 62, 80, 0.2);
+    transition: all 0.3s ease;
+}
+
+.business-card.version1::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -30%;
+    width: 200px;
+    height: 200px;
+    background: rgba(52, 152, 219, 0.1);
+    border-radius: 50%;
+}
+
+.business-card.version1::after {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    left: -20%;
+    width: 150px;
+    height: 150px;
+    background: rgba(46, 204, 113, 0.08);
+    border-radius: 50%;
+}
+
+.business-card.version1 .card-content {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    z-index: 1;
+}
+
+.business-card.version1 .card-avatar {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.business-card.version1 .card-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.business-card.version1 .card-avatar i {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.business-card.version1 .card-info {
+    flex: 1;
+}
+
+.business-card.version1 .card-info h3 {
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.business-card.version1 .card-info p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.business-card.version1 .company-name {
+    color: #3498DB !important;
+    font-weight: 600;
+}
+
+.business-card.version1 .card-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 1;
+    margin-top: 20px;
+}
+
+.business-card.version1 .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 11px;
+}
+
+.business-card.version1 .contact-item i {
+    font-size: 14px;
+    color: #3498DB;
+    flex-shrink: 0;
+    width: 16px;
+    text-align: center;
+    margin-top: 1px;
+}
+
+.business-card.version1 .contact-item span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.business-card.version1 .address-item {
+    align-items: flex-start;
+}
+
+.business-card.version1 .address-text {
+    flex: 1;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    text-align: left;
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Version 2: Minimalist Mint */
+.business-card.version2 {
+    width: 350px;
+    min-height: 220px;
+    background: #E0F7FA;
+    border: 2px dashed #2C3E50;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    position: relative;
+    overflow: visible;
+    box-shadow: 0 5px 20px rgba(44, 62, 80, 0.15);
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', 'Oswald', 'Impact', sans-serif;
+}
+
+.business-card.version2::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 30px;
+    background-image: radial-gradient(#2C3E50 2px, transparent 2px);
+    background-size: 10px 10px;
+    z-index: 1;
+}
+
+
+.business-card.version2 .top-circle {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 30px;
+    border: 3px solid #2C3E50;
+    border-bottom: none;
+    border-radius: 25px 25px 0 0;
+    z-index: 1;
+}
+
+.business-card.version2 .card-content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    position: relative;
+}
+
+.business-card.version2 .card-info-section {
+    flex: 0 0 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 15px;
+}
+
+.business-card.version2 .card-name-block {
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.business-card.version2 .card-name {
+    color: #2C3E50;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.business-card.version2 .card-title {
+    color: #2C3E50;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.business-card.version2 .card-divider {
+    display: none;
+}
+
+.business-card.version2 .card-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: -5px;
+}
+
+.business-card.version2 .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #2C3E50;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.business-card.version2 .contact-item i {
+    color: #2C3E50;
+    font-size: 12px;
+    width: 14px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.business-card.version2 .contact-item span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-word;
+    line-height: 1.3;
+}
+
+.business-card.version2 .address-item {
+    align-items: flex-start;
+    margin-top: 2px;
+}
+
+.business-card.version2 .address-item span {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+    line-height: 1.3 !important;
+}
+
+.business-card.version2 .card-brand-section {
+    flex: 0 0 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.business-card.version2 .card-avatar-container {
+    position: relative;
+    width: 85px;
+    height: 85px;
+    border: 3px solid #2C3E50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #E6E6FA 0%, #DDA0DD 100%);
+}
+
+.business-card.version2 .card-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.business-card.version2 .card-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.business-card.version2 .card-avatar i {
+    font-size: 34px;
+    color: #2C3E50;
+}
+
+/* Version 3: Elegant Gold */
+.business-card.version3 {
+    width: 350px; /* 3.5 inches */
+    min-height: 200px; /* 2 inches */
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 0;
+    display: flex;
+    position: relative;
+    overflow: visible;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+    transition: all 0.3s ease;
+    font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+/* Left 35% Visual Zone with gold background */
+.business-card.version3 .gold-shape-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 35%;
+    height: 100%; /* Full height without bottom strip */
+    background: linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #B8860B 100%);
+    border-radius: 12px 0 0 12px;
+    z-index: 1;
+}
+
+.business-card.version3 .card-content {
+    display: flex;
+    width: 100%;
+    min-height: 200px; /* 2 inches - matching card height */
+    z-index: 3;
+    position: relative;
+    height: 100%; /* Full height without bottom strip */
+}
+
+/* Left 35% Visual Zone */
+.business-card.version3 .avatar-section {
+    flex: 0 0 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Large circular frame - 70% of card's vertical height */
+.business-card.version3 .avatar-frame {
+    width: calc(0.7 * 200px); /* 70% of 200px card height = 140px */
+    height: calc(0.7 * 200px); /* 70% of 200px card height = 140px */
+    max-width: 120px; /* Cap the size */
+    max-height: 120px; /* Cap the size */
+    min-width: 80px; /* Minimum size */
+    min-height: 80px; /* Minimum size */
+    border-radius: 50%;
+    border: 4px solid #FFFFFF;
+    box-shadow: 0 0 0 3px #D4AF37;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #F8F8F8;
+}
+
+.business-card.version3 .avatar-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.business-card.version3 .avatar-frame i {
+    font-size: calc(0.4 * 0.7 * 200px); /* 40% of frame size = 56px */
+    color: #D4AF37;
+}
+
+/* Right 65% Text Zone with white background */
+.business-card.version3 .info-section {
+    flex: 0 0 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px 15px 20px 10px; /* Padding within the text zone */
+    background: #FFFFFF;
+    position: relative;
+    z-index: 3;
+}
+
+/* Text styling */
+.business-card.version3 .name-gold {
+    color: #D4AF37;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.1;
+}
+
+.business-card.version3 .title-gold {
+    color: #FFD700;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    line-height: 1.2;
+}
+
+.business-card.version3 .company-dark {
+    color: #4A4A4A;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 0;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+/* Contact information integrated in the 65% text zone */
+.business-card.version3 .contact-info {
+    margin-top: 15px;
+    width: 100%;
+}
+
+.business-card.version3 .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+/* Gold circular icons for contact info */
+.business-card.version3 .contact-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 1px 4px rgba(212, 175, 55, 0.4);
+}
+
+.business-card.version3 .contact-icon i {
+    font-size: 10px;
+    color: #FFFFFF;
+}
+
+/* Contact text styling */
+.business-card.version3 .contact-text {
+    color: #4A4A4A;
+    font-size: 11px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-weight: 400;
+    line-height: 1.3;
+    flex: 1;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+}
+
+.business-card.version3 .address-text {
+    display: block;
+    margin-top: 2px;
+}
+
+/* Responsive design for Version 3 */
+@media (max-width: 768px) {
+    .business-card.version3 {
+        width: 300px;
+        min-height: 180px;
+    }
+
+    .business-card.version3 .card-content {
+        height: 100%; /* Full height without bottom strip */
+        min-height: 180px; /* Full mobile height */
+    }
+
+    .business-card.version3 .avatar-frame {
+        width: calc(0.7 * 180px); /* 70% of 180px mobile height */
+        height: calc(0.7 * 180px);
+        max-width: 100px;
+        max-height: 100px;
+        min-width: 60px;
+        min-height: 60px;
+        border: 3px solid #FFFFFF;
+        box-shadow: 0 0 0 2px #D4AF37;
+    }
+
+    .business-card.version3 .avatar-frame i {
+        font-size: calc(0.4 * 0.7 * 180px); /* 40% of frame size */
+    }
+
+    .business-card.version3 .name-gold {
+        font-size: 16px;
+    }
+
+    .business-card.version3 .title-gold {
+        font-size: 11px;
+    }
+
+    .business-card.version3 .company-dark {
+        font-size: 10px;
+    }
+
+    .business-card.version3 .info-section {
+        padding: 15px 10px 15px 8px;
+    }
+
+    .business-card.version3 .contact-row {
+        gap: 8px;
+        margin-bottom: 6px;
+    }
+
+    .business-card.version3 .contact-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .business-card.version3 .contact-icon i {
+        font-size: 8px;
+    }
+
+    .business-card.version3 .contact-text {
+        font-size: 9px;
+    }
+}
+
+/* 下载按钮 */
+.download-section {
+    text-align: center;
+}
+
+.download-btn {
+    padding: 15px 40px;
+    background: #3498DB;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
+}
+
+.download-btn:hover {
+    background: #2980B9;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(52, 152, 219, 0.4);
+}
+
+.download-btn i {
+    font-size: 20px;
+}
+
+/* 模态框 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: white;
+    margin: 50px auto;
+    padding: 0;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 20px;
+    color: #2d3748;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #a0aec0;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: #f7fafc;
+    color: #4a5568;
+}
+
+.crop-container {
+    padding: 20px;
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.crop-container img {
+    max-width: 100%;
+    display: block;
+    max-height: 50vh;
+}
+
+/* Cropper.js 自定义样式 */
+.cropper-container {
+    max-height: 50vh;
+}
+
+.cropper-view-box {
+    outline: 2px solid rgba(52, 152, 219, 0.5);
+}
+
+.cropper-face {
+    background-color: inherit;
+}
+
+.crop-controls {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.crop-controls input[type="range"] {
+    flex: 1;
+    max-width: 200px;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.crop-controls input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #3498DB;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.crop-controls input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: #3498DB;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+.crop-controls button {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.crop-controls button:first-of-type {
+    background: #3498DB;
+    color: white;
+}
+
+.crop-controls button:first-of-type:hover {
+    background: #2980B9;
+}
+
+.crop-controls button:last-of-type {
+    background: #e2e8f0;
+    color: #4a5568;
+}
+
+.crop-controls button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 响应式设计 - 两个版本 */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .form-section,
+    .preview-section {
+        padding: 30px 20px;
+    }
+
+    .preview-header h2 {
+        font-size: 24px;
+    }
+
+    .style-selector {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .style-option {
+        flex-direction: row;
+        justify-content: flex-start;
+        padding: 8px 12px;
+    }
+
+    /* 通用名片大小调整 */
+    .business-card.version1,
+    .business-card.version2 {
+        width: 300px;
+        min-height: 180px;
+        padding: 15px;
+        height: auto;
+    }
+
+    /* Version 1 响应式 */
+    .business-card.version1 .card-avatar {
+        width: 50px;
+        height: 50px;
+    }
+
+    .business-card.version1 .card-info h3 {
+        font-size: 18px;
+    }
+
+    .business-card.version1 .card-info p {
+        font-size: 12px;
+    }
+
+    /* Version 2 响应式 */
+    .business-card.version2::before {
+        width: 50px;
+        height: 25px;
+        background-size: 8px 8px;
+    }
+
+    .business-card.version2::after {
+        width: 35px;
+        height: 35px;
+    }
+
+    .business-card.version2 .top-circle {
+        width: 40px;
+        height: 25px;
+        border-width: 2px;
+    }
+
+    .business-card.version2 .card-name {
+        font-size: 18px;
+    }
+
+    .business-card.version2 .card-title {
+        font-size: 13px;
+    }
+
+    .business-card.version2 .card-divider {
+        margin: 8px 0 12px 0;
+    }
+
+    .business-card.version2 .contact-item {
+        font-size: 9px;
+        gap: 8px;
+    }
+
+    .business-card.version2 .contact-item i {
+        font-size: 10px;
+        width: 12px;
+    }
+
+    .business-card.version2 .card-avatar-container {
+        width: 60px;
+        height: 60px;
+        border-width: 2px;
+    }
+
+    .business-card.version2 .card-avatar i {
+        font-size: 24px;
+    }
+
+    .business-card.version2 .card-info-section {
+        padding-right: 10px;
+    }
+
+    .header-content {
+        padding: 0 20px;
+    }
+
+    .footer-content {
+        padding: 0 20px;
+    }
+
+    .preview-sticky {
+        top: 90px;
+        height: calc(100vh - 120px);
+    }
+}
+
+/* Footer Styles */
+.footer {
+    background: white;
+    border-top: 1px solid #E0E6ED;
+    padding: 30px 0;
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-links {
+    display: flex;
+    gap: 30px;
+}
+
+.footer-links a {
+    color: #7F8C8D;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #3498DB;
+}
+
+.footer-copyright p {
+    color: #95A5A6;
+    font-size: 14px;
+}

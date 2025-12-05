@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Card Generator Online | Cardify</title>
+    <meta name="description" content="Create beautiful, professional business cards online for Free">
+    <link rel="icon" type="image/png" href="Favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <img src="logo.jpg" alt="Cardify Logo" class="logo">
+            <div class="header-text">
+                <h1>Free Business Card Generator</h1>
+                <p>Create your professional business card in minutes</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-wrapper">
+        <div class="container">
+            <!-- Left: Input Form -->
+            <div class="form-section">
+                
+                <form id="cardForm" class="card-form">
+                    <!-- Card Style Selection -->
+                    <div class="form-group">
+                        <label for="cardStyle">Choose Card Style</label>
+                        <div class="style-selector">
+                            <div class="style-option active" data-style="version1">
+                                <div class="style-preview version1"></div>
+                                <span>Version 1</span>
+                                <small>Modern Dark</small>
+                            </div>
+                            <div class="style-option" data-style="version2">
+                                <div class="style-preview version2"></div>
+                                <span>Version 2</span>
+                                <small>Minimalist Mint</small>
+                            </div>
+                            <div class="style-option" data-style="version3">
+                                <div class="style-preview version3"></div>
+                                <span>Version 3</span>
+                                <small>Elegant Gold</small>
+                            </div>
+                        </div>
+                        <input type="hidden" id="cardStyle" value="version1">
+                    </div>
+
+                    <!-- Avatar Upload -->
+                    <div class="form-group">
+                        <label for="avatar">Upload Photo</label>
+                        <div class="avatar-upload">
+                            <input type="file" id="avatar" accept="image/*" hidden>
+                            <div class="avatar-preview" id="avatarPreview">
+                                <i class="ri-camera-line"></i>
+                            </div>
+                            <button type="button" class="upload-btn" onclick="document.getElementById('avatar').click()">
+                                Choose Photo
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Basic Information -->
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="title">Job Title</label>
+                        <input type="text" id="title" placeholder="e.g., Product Manager">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" placeholder="Enter company name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="website">Website</label>
+                        <input type="url" id="website" placeholder="https://example.com">
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" placeholder="+1 (555) 123-4567">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="your@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" placeholder="Enter your address">
+                    </div>
+                </form>
+            </div>
+
+            <!-- Right: Preview Section -->
+            <div class="preview-section">
+                <div class="preview-sticky">
+                    <div class="preview-header">
+                        <h2>Card Preview</h2>
+                        <p>See your business card in real-time</p>
+                    </div>
+
+                    <div class="card-container">
+                        <!-- Version 1: Modern Dark -->
+                        <div class="business-card version1" id="businessCard" style="display: block;">
+                            <div class="card-content">
+                                <div class="card-avatar" id="cardAvatarV1">
+                                    <i class="ri-user-line"></i>
+                                </div>
+                                <div class="card-info">
+                                    <h3 id="cardNameV1">Your Name</h3>
+                                    <p id="cardTitleV1">Your Title</p>
+                                    <p id="cardCompanyV1" class="company-name">Company Name</p>
+                                </div>
+                            </div>
+                            <div class="card-contacts">
+                                <div class="contact-item" id="cardPhoneV1">
+                                    <i class="ri-phone-line"></i>
+                                    <span></span>
+                                </div>
+                                <div class="contact-item" id="cardEmailV1">
+                                    <i class="ri-mail-line"></i>
+                                    <span></span>
+                                </div>
+                                <div class="contact-item" id="cardWebsiteV1">
+                                    <i class="ri-global-line"></i>
+                                    <span></span>
+                                </div>
+                                <div class="contact-item address-item" id="cardAddressV1">
+                                    <i class="ri-map-pin-line"></i>
+                                    <div class="address-text"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Version 2: Minimalist Mint -->
+                        <div class="business-card version2" id="businessCardV2" style="display: none;">
+                            <div class="top-circle"></div>
+                            <div class="card-content">
+                                <div class="card-info-section">
+                                    <div class="card-name-block">
+                                        <h3 id="cardNameV2" class="card-name">Your Name</h3>
+                                        <p id="cardTitleV2" class="card-title">Your Title</p>
+                                    </div>
+                                    <div class="card-divider"></div>
+                                    <div class="card-contacts">
+                                        <div class="contact-item" id="cardPhoneV2">
+                                            <i class="ri-phone-line"></i>
+                                            <span>PHONE</span>
+                                        </div>
+                                        <div class="contact-item" id="cardEmailV2">
+                                            <i class="ri-mail-line"></i>
+                                            <span>EMAIL</span>
+                                        </div>
+                                        <div class="contact-item" id="cardWebsiteV2">
+                                            <i class="ri-global-line"></i>
+                                            <span>WEBSITE</span>
+                                        </div>
+                                        <div class="contact-item address-item" id="cardAddressV2">
+                                            <i class="ri-map-pin-line"></i>
+                                            <span>ADDRESS</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-brand-section">
+                                    <div class="card-avatar-container">
+                                        <div class="card-avatar" id="cardAvatarV2">
+                                            <i class="ri-user-line"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Version 3: Elegant Gold -->
+                        <div class="business-card version3" id="businessCardV3" style="display: none;">
+                            <div class="gold-shape-left"></div>
+                            <div class="card-content">
+                                <!-- Left 35% Visual Zone -->
+                                <div class="avatar-section">
+                                    <div class="avatar-frame" id="cardAvatarV3">
+                                        <i class="ri-user-line"></i>
+                                    </div>
+                                </div>
+                                <!-- Right 65% Text Zone -->
+                                <div class="info-section">
+                                    <h3 id="cardNameV3" class="name-gold">Full Name</h3>
+                                    <p id="cardTitleV3" class="title-gold">Job Title</p>
+                                    <p id="cardCompanyV3" class="company-dark">Company</p>
+                                    <div class="contact-info">
+                                        <div class="contact-row" id="cardPhoneV3">
+                                            <div class="contact-icon">
+                                                <i class="ri-phone-line"></i>
+                                            </div>
+                                            <span class="contact-text"></span>
+                                        </div>
+                                        <div class="contact-row" id="cardEmailV3">
+                                            <div class="contact-icon">
+                                                <i class="ri-mail-line"></i>
+                                            </div>
+                                            <span class="contact-text"></span>
+                                        </div>
+                                        <div class="contact-row" id="cardWebsiteV3">
+                                            <div class="contact-icon">
+                                                <i class="ri-global-line"></i>
+                                            </div>
+                                            <span class="contact-text"></span>
+                                        </div>
+                                        <div class="contact-row" id="cardAddressV3">
+                                            <div class="contact-icon">
+                                                <i class="ri-map-pin-line"></i>
+                                            </div>
+                                            <span class="contact-text address-text"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="download-section">
+                        <button id="downloadBtn" class="download-btn">
+                            <i class="ri-download-line"></i>
+                            Download Card (JPG)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2024 Cardify. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Avatar Crop Modal -->
+    <div id="cropModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Adjust Photo</h3>
+                <button class="close-btn" onclick="closeCropModal()">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            <div class="crop-container">
+                <img id="cropImage" src="" alt="Photo to crop">
+                <div class="crop-controls">
+                    <input type="range" id="zoomSlider" min="0.5" max="3" step="0.1" value="1">
+                    <button id="confirmCrop">Confirm</button>
+                    <button onclick="closeCropModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
