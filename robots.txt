@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://business-card-generator-ruddy.vercel.app/sitemap.xml
+
+# Block unnecessary crawling of assets
+Disallow: /cdn/
+Disallow: *.css$
+Disallow: *.js$
+Disallow: /cropperjs/
+
+# Allow search engines to crawl the main content
+Allow: /index.html
+Allow: /styles.css
+Allow: /script.js
+
+# Specific directives for common crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
